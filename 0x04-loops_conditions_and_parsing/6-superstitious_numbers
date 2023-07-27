@@ -5,7 +5,7 @@
 
 while [ ! $res -gt 20 ]
 do
-echo $res
+echo "$res"
 case $res in
 4)
 echo "bad luck from China"
