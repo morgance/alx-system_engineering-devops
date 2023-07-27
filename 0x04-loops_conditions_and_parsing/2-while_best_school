@@ -3,7 +3,7 @@
 
 res=0
 
-while [$res -lt 10 ]
+while [ $res -lt 10 ]
 do
 
 	echo "Best School"
