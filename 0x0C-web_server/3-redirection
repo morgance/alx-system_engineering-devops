@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
-# Script that installs Nginx server and redirects /redirect_me
-apt-get -y update
-apt-get -y install nginx
-echo "Hello World" > /var/www/html/index.html
-sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/morgance permanent;/" /etc/nginx/sites-available/default
-service nginx start
+# 1nstall nginx on web server
+#redirects to my github
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+echo "Hello World!" > sudo /var/www/html/index.html
+
+replacement_string="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/morgance permanent;"
+sudo sed -i "s/server_name _;/$replacement_string/" /etc/nginx/sites-enabled/default
+
+sudo service nginx restart
